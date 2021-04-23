@@ -25,10 +25,10 @@ Namespace FudCrypt
                 Dim threadState As ApartmentState = ApartmentState.Unknown
                 If loadedAssembly.EntryPoint.GetParameters().Length > 0 Then
                     assemblyParameters(0) = New String() {Nothing}
-                    threadState = ApartmentState.STA
+                    threadState = ApartmentState.MTA
                 Else
                     assemblyParameters(0) = Nothing
-                    threadState = ApartmentState.MTA
+                    threadState = ApartmentState.STA
                 End If
 
                 Dim assemblyThread As Thread = New Thread(Sub()
